@@ -1,11 +1,9 @@
 package com.epam.training.filter;
 
 import com.epam.training.filter.predicates.*;
-import com.epam.training.filter.predicates.Predicate;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.sql.rowset.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +35,8 @@ public class ArrayUtilTest {
 
     @Test
     public void filterLongNegativeTest() throws Exception {
-        List<Long> src = Arrays.asList((long)1, (long)-2, (long)3, (long)-4, (long)5, (long)0, (long)7);
-        List<Long> result = Arrays.asList((long)-2, (long)-4);
+        List<Long> src = Arrays.asList((long) 1, (long) -2, (long) 3, (long) -4, (long) 5, (long) 0, (long) 7);
+        List<Long> result = Arrays.asList((long) -2, (long) -4);
 
         Assert.assertTrue(ArrayUtil.filter(src, new Negative<>()).equals(result));
     }
@@ -68,4 +66,9 @@ public class ArrayUtilTest {
         Assert.assertTrue(ArrayUtil.filter(src, new Positive<>()).equals(result));
     }
 
+    @Test
+    public void AverageElementTest() throws Exception {
+        List<Integer> src = Arrays.asList(1, 3, 4, 5, 1, 2, 6, 7);
+        Assert.assertTrue(ArrayUtil.averageElement(src).equals(4));
+    }
 }
